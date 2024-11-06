@@ -10,24 +10,28 @@ class Authenticator:
         self.conn:duckdb.DuckDBPyConnection = conn
 
     def handle_connn(self,sockClient:socket.socket):
-        reader = sockClient.makefile()
-        username = reader.readline()
-        password = reader.readline()
-        username = username.strip()
-        password = password.strip()
-        
-        exists =self.conn.execute("select expdisable,expire from users where username=? and password=?",(username,password)).fetchall()
-        if len(exists) == 0:
-            sockClient.sendall(bytes([0]))
-        else:
-            expdisable = exists[0][0]
-            expire = exists[0][1]
-            now = int(time.time())
-            if not expdisable and now > expire:
+        try:
+            reader = sockClient.makefile()
+            username = reader.readline()
+            password = reader.readline()
+            username = username.strip()
+            password = password.strip()
+            
+            exists =self.conn.execute("select expdisable,expire from users where username=? and password=?",(username,password)).fetchall()
+            if len(exists) == 0:
                 sockClient.sendall(bytes([0]))
             else:
-                sockClient.sendall(bytes([1]))
-        sockClient.close()
+                expdisable = exists[0][0]
+                expire = exists[0][1]
+                now = int(time.time())
+                if not expdisable and now > expire:
+                    sockClient.sendall(bytes([0]))
+                else:
+                    sockClient.sendall(bytes([1]))
+            sockClient.close()
+            print("no problem")
+        except Exception as e:
+            print(e)
 
     def start_server(self):
         if os.path.exists(self.path):
