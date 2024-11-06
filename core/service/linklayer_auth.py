@@ -34,6 +34,7 @@ class Authenticator:
             os.remove(self.path)
         sock = socket.socket(socket.AF_UNIX,socket.SOCK_STREAM)
         sock.bind(self.path)
+        print("path "+self.path)
         os.chmod(self.path,777)
         sock.listen(1)
         print("unix auth on "+self.path)
