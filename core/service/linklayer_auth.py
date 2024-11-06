@@ -16,7 +16,7 @@ class Authenticator:
             password = reader.readline()
             username = username.strip()
             password = password.strip()
-            
+            print("username "+username+" "+password)
             exists =self.conn.execute("select expdisable,expire from users where username=? and password=?",(username,password)).fetchall()
             if len(exists) == 0:
                 sockClient.sendall(bytes([0]))
@@ -29,7 +29,7 @@ class Authenticator:
                 else:
                     sockClient.sendall(bytes([1]))
             sockClient.close()
-            print("no problem")
+            
         except Exception as e:
             print(e)
 
