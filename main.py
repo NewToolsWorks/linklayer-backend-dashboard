@@ -24,7 +24,7 @@ from schema.file_schema import file_arg
 from schema.linklayer_schema import DNSTTParam, HTTPDualParam, HTTPParam, HTTPTLSParam, TLSParam, UDPParam
 import subprocess
 from core.utils import get_network_ip
-from core.service.linklayer import LinkLayer
+from core.service.linklayer import LinkLayer, Linklayer_status
 from core.service.linklayer_auth import Authenticator
 from time import time
 from anyio import open_file
@@ -269,6 +269,8 @@ async def readLayer(layer:str ,user:Annotated[any,Depends(require_loggued_api)])
 async def createLayer(layer:str ,user:Annotated[any,Depends(require_loggued_api)],req:Request):
       body  = await req.body()
       raw = json.loads(body)
+      if link_service.get_service_status() == Linklayer_status.ON or link_service.get_service_status() == Linklayer_status.STARTING:
+          raise HTTPException(400,"Stop service")
       if len(raw) == 0:
           raise HTTPException(400,"Bad request")
       if layer == "http":
