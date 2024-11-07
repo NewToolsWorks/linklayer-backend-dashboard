@@ -25,6 +25,7 @@ class LinkLayer:
             algo = io.readline().decode("utf-8").strip()
             if algo == "":
                 break
+            print(algo)
 
     def get_service_status(self) -> Enum:
         return  self.status
