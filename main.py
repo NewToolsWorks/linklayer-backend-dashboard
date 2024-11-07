@@ -40,6 +40,7 @@ def load_config()->Config:
         all = f.read()
         js = jsons.loads(all)
         f.close()
+        print(type(Config(**js)))
         return Config(**js)
     else:
         cfg = Config()
@@ -126,11 +127,14 @@ async def session_handle(request: Request, call_next):
             pass    
     return await call_next(request)
 
-def remove_by_type(type:str):
+def remove_by_type(type_layer:str):
     services_copy = service_config.services[:]
     for service in services_copy:
-        if service.type == type:         
-            service_config.services.remove(service)
+        if type(service) is dict:
+            pass
+        else:    
+            if service.type == type_layer:         
+                service_config.services.remove(service)
        
 def get_by_type(type_layer:str):
     result = []
@@ -268,21 +272,19 @@ async def createLayer(layer:str ,user:Annotated[any,Depends(require_loggued_api)
       if len(raw) == 0:
           raise HTTPException(400,"Bad request")
       if layer == "http":
-            try:
-                http_param  = HTTPParam(**raw)
-            
-                if http_param.enabled:
-                    remove_by_type("http")
-                
-                    for service in http_param.h:
-                        servicehttp = Service()
-                        servicehttp.type = "http"
-                        servicehttp.cfg = service
-                        service_config.services.append(servicehttp)
-                else:            
-                    remove_by_type("http")
-            except Exception as e:
-                print(e)
+           
+            http_param  = HTTPParam(**raw)
+         
+            if http_param.enabled:
+                remove_by_type("http")
+               
+                for service in http_param.h:
+                    servicehttp = Service()
+                    servicehttp.type = "http"
+                    servicehttp.cfg = service
+                    service_config.services.append(servicehttp)
+            else:            
+                remove_by_type("http")
         
       if layer == "tls":
             
