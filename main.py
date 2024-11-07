@@ -44,7 +44,7 @@ def load_config()->Config:
     else:
         cfg = Config()
         cfg.auth = "unix"
-        cfg.path = "/tmp/linklayer-handle.sock"
+        cfg.path = "/var/run/linklayer-handle.sock"
         return cfg
 
 link_service = LinkLayer()
