@@ -3,4 +3,4 @@ from entity.linklayer import Config
 
 
 cfg = Config()
-jsons.dumps(cfg.__dict__)
+print(jsons.dumps(cfg.__dict__))
