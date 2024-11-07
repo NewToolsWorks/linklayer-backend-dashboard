@@ -268,7 +268,7 @@ async def createLayer(layer:str ,user:Annotated[any,Depends(require_loggued_api)
       if len(raw) == 0:
           raise HTTPException(400,"Bad request")
       if layer == "http":
-            
+            print("layer")
             http_param  = HTTPParam(**raw)
          
             if http_param.enabled:
