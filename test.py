@@ -5,12 +5,9 @@ from entity.linklayer import HTTP, HTTPTLS, TLS, TLS1, Config, HTTPResponse, Ser
 cfg = Config()
 service = Service()
 
-http = HTTPResponse()
+http = HTTPResponse("HTTP/1.1 200 OK\r\n\r\n")
 
-http.Response = "HTTP/1.1 200 OK\r\n\r\n"
-tls = TLS1
-tls.Key = "/opt/fladsf"
-tls.Cert = "/opt/flafd"
+tls = TLS1( "/opt/fladsf", "/opt/fladsf")
 
 
 httptls = HTTPTLS(http,tls,"0.0.0.0:443")
