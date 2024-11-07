@@ -40,7 +40,7 @@ def load_config()->Config:
         all = f.read()
         js = jsons.loads(all)
         f.close()
-        print(type(Config(**js).services))
+        print(type(Config(**js).services[0]))
         return Config(**js)
     else:
         cfg = Config()
