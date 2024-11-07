@@ -35,8 +35,8 @@ class HTTPResponse:
 
 @dataclass
 class HTTPTLS:
-    Http: HTTPResponse
-    TLS: TLS1
+    Http: {HTTPResponse}
+    TLS: {TLS1}
     Listen: str
 
 @dataclass
