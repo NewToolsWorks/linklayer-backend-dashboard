@@ -40,7 +40,6 @@ def load_config()->Config:
         all = f.read()
         js = jsons.loads(all)
         f.close()
-        print(type(Config(**js).services[0]))
         return Config(**js)
     else:
         cfg = Config()
@@ -131,7 +130,8 @@ def remove_by_type(type_layer:str):
     services_copy = service_config.services[:]
     for service in services_copy:
         if type(service) is dict:
-            pass
+            if service["type"] == type_layer:
+                service_config.services.remove(service["type"])
         else:    
             if service.type == type_layer:         
                 service_config.services.remove(service)
