@@ -20,7 +20,7 @@ class LinkLayer:
         self.status = Linklayer_status.OFF
         self.process:subprocess.Popen = None
 
-    def discard(self,io:IO):
+    def discard(io:IO):
         while True:
             algo = io.readline().decode("utf-8").strip()
             if algo == "":
