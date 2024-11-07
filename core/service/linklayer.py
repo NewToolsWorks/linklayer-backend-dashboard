@@ -64,8 +64,8 @@ class LinkLayer:
 
             log_file.close()        
             if started_service:
-                t1 = threading.Thread(target=self.discard,args=(self.process.stdout,))
-                t2 = threading.Thread(target=self.discard,args=(self.process.stderr,))
+                t1 = threading.Thread(target=lambda: self.discard(self.process.stdout))
+                t2 = threading.Thread(target=lambda: self.discard(self.process.stderr))
                 t1.start()
                 t2.start()
                 self.status = Linklayer_status.ON
