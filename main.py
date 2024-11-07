@@ -131,7 +131,7 @@ def remove_by_type(type_layer:str):
     for service in services_copy:
         if type(service) is dict:
             if service["type"] == type_layer:
-                service_config.services.remove(service["type"])
+                service_config.services.remove(service)
         else:    
             if service.type == type_layer:         
                 service_config.services.remove(service)
