@@ -268,19 +268,21 @@ async def createLayer(layer:str ,user:Annotated[any,Depends(require_loggued_api)
       if len(raw) == 0:
           raise HTTPException(400,"Bad request")
       if layer == "http":
-            print("layer")
-            http_param  = HTTPParam(**raw)
-         
-            if http_param.enabled:
-                remove_by_type("http")
-               
-                for service in http_param.h:
-                    servicehttp = Service()
-                    servicehttp.type = "http"
-                    servicehttp.cfg = service
-                    service_config.services.append(servicehttp)
-            else:            
-                remove_by_type("http")
+            try:
+                http_param  = HTTPParam(**raw)
+            
+                if http_param.enabled:
+                    remove_by_type("http")
+                
+                    for service in http_param.h:
+                        servicehttp = Service()
+                        servicehttp.type = "http"
+                        servicehttp.cfg = service
+                        service_config.services.append(servicehttp)
+                else:            
+                    remove_by_type("http")
+            except Exception as e:
+                print(e)
         
       if layer == "tls":
             
