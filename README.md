@@ -56,3 +56,9 @@ example command:
 ```console
 python3 install.py --port [PORT] --host 0.0.0.0 --username [USERNAME] --password [PASSWORD]
 ```
+
+Done with this the web dashboard is now installed, to access from the browser enter http://ipvps:port/login
+example:
+
+> http://45.25.8.6:8000/login
+
