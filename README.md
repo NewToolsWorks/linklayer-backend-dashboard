@@ -62,3 +62,6 @@ example:
 
 > http://45.25.8.6:8000/login
 
+---
+
+That's all, it's a basic web dashboard that we hope will be useful to you as well. We look forward to your push requests to improve this dashboard, especially that you can share it so that many people can use it. Thank you for supporting the project and again we hope that it will be useful to you.
