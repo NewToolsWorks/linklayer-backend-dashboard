@@ -40,3 +40,16 @@ _Install dependencies_
 ```console
 pip install -r requeriments.txt
 ```
+
+
+_Install web dashboard_
+
+- Replace [PORT] with your port example: 8000
+- Replace [USERNAME] with your username example: admin
+- REPLACE [PASSWORD] with your password example: admin
+
+example commando: python3 install.py --port 8000 --host 0.0.0.0 --username admin --password admin
+
+```console
+python3 install.py --port [PORT] --host 0.0.0.0 --username [USERNAME] --password [PASSWORD]
+```
