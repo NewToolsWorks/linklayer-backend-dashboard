@@ -19,9 +19,6 @@ _Instal Venv python_
 pip install --break-system-packages virtualenv
 ```
 
-```console
-cd /opt 
-```
 
 _Clone repository_
 
