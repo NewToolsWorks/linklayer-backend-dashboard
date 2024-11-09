@@ -68,5 +68,5 @@ class Auth:
 @dataclass
 class Config(Auth):
     auth: str = "unix"
-    path:str = "/tmp/linklayer-handle.sock"
+    path:str = "/var/run/lnk-handler.sock"
     services: List[Service] = field(default_factory=list)
