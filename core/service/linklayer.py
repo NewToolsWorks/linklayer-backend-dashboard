@@ -8,6 +8,7 @@ from entity.linklayer import Config
 import jsons
 import os
 import threading
+import os
 class Linklayer_status(Enum):
     OFF = "off"
     STARTING = "starting"
@@ -40,9 +41,10 @@ class LinkLayer:
             f.write(raw)
             f.close()
             started_service = False
-            
+            my_env = os.environ.copy()
+            my_env["PATH"] = f"/usr/sbin:/sbin:{my_env['PATH']}"
             self.process = subprocess.Popen([linklayer_binary+"/server","-cfg",linklayer_binary+"/cfg/config.json"]
-                                            ,stdout=subprocess.PIPE,stderr=subprocess.PIPE,cwd=linklayer_binary)
+                                            ,stdout=subprocess.PIPE,stderr=subprocess.PIPE,cwd=linklayer_binary,env=my_env)
             while True:
                 line = self.process.stdout.readline().decode("utf-8").strip()
                 if line == "":
