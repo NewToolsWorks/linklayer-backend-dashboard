@@ -43,7 +43,7 @@ class LinkLayer:
             started_service = False
             my_env = os.environ.copy()
             my_env["PATH"] = f"/usr/sbin:/sbin:{my_env['PATH']}"
-            print(my_env)
+          
             self.process = subprocess.Popen([linklayer_binary+"/server","-cfg",linklayer_binary+"/cfg/config.json"]
                                             ,stdout=subprocess.PIPE,stderr=subprocess.PIPE,cwd=linklayer_binary,env=my_env)
             while True:
