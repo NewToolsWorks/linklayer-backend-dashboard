@@ -113,7 +113,7 @@ async def session_handle(request: Request, call_next):
             response = await call_next(request)
             return response
         except Exception as ex:
-     
+            print(ex)
             return RedirectResponse("/login")
     if path.startswith("/login"):
         
@@ -121,8 +121,8 @@ async def session_handle(request: Request, call_next):
             await require_logged(request)
          
             return RedirectResponse("/dashboard")
-        except:
-          
+        except Exception as ex:
+            print(ex)
             pass    
     return await call_next(request)
 

@@ -57,8 +57,8 @@ Wants=network-online.target
 After=network.target network-online.target
 
 [Service]
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
 User=root
 Type=simple
 TimeoutStopSec=1
