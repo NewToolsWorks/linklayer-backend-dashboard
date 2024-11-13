@@ -73,22 +73,17 @@ app.mount("/",route)
 
 async def require_logged(request:Request)->any:
 
-    ipClient = request.client.host if  request.headers.get("x-forwarded-for") == None else request.headers.get("x-forwarded-for")
-   
+ 
     token = request.cookies.get("token")
    
     if token == None or token == "":
-        print("none")
         raise InvalidTokenError
     if not auth.verifyJWT(token):
-        print("verify")
         raise InvalidTokenError
     raw = auth.decodeJWT(token)
  
     user = jwt_data(**raw)
-    if not user.ip == ipClient:
-        print("IP "+user.ip+ " "+ipClient)
-        raise InvalidTokenError
+    
     
     return user
 
