@@ -78,16 +78,16 @@ async def require_logged(request:Request)->any:
     token = request.cookies.get("token")
    
     if token == None or token == "":
-     
+        print("none")
         raise InvalidTokenError
     if not auth.verifyJWT(token):
-  
+        print("verify")
         raise InvalidTokenError
     raw = auth.decodeJWT(token)
  
     user = jwt_data(**raw)
     if not user.ip == ipClient:
-    
+        rint("IP")
         raise InvalidTokenError
     
     return user
@@ -114,7 +114,7 @@ async def session_handle(request: Request, call_next):
             response = await call_next(request)
             return response
         except Exception as ex:
-            print("exception "+str(ex))
+        
             return RedirectResponse("/login")
     if path.startswith("/login"):
         
