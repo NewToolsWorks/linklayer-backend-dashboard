@@ -14,10 +14,6 @@ _Install all dependencies_
 apt update && apt install python3 && apt install -y git && apt install -y python3-venv && apt install -y python3-pip 
 ```
 
-_Instal Venv python_
-```console
-pip install --break-system-packages virtualenv
-```
 
 
 _Clone repository_
