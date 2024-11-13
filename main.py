@@ -114,7 +114,7 @@ async def session_handle(request: Request, call_next):
             response = await call_next(request)
             return response
         except Exception as ex:
-            print("exception "+ex)
+            print(ex)
             return RedirectResponse("/login")
     if path.startswith("/login"):
         
