@@ -11,7 +11,7 @@ Dashboard web server to manage linklayer VPN
 _Install all dependencies_
 
 ```console
-apt update && apt install python3 && apt install git && apt install python3-venv
+apt update && apt install python3 && apt install -y git && apt install -y python3-venv && apt install -y python3-pip 
 ```
 
 _Instal Venv python_
