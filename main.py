@@ -107,14 +107,14 @@ async def require_loggued_api(request:Request) -> any:
 @app.middleware("http")
 async def session_handle(request: Request, call_next):
     path = request.url.path.lower()
-    print("access "+path)
+    
     if path.startswith("/dashboard") or path.startswith("/user-config"):
         try:
             await require_logged(request)
             response = await call_next(request)
             return response
         except Exception as ex:
-            print(ex)
+            print("exception")
             return RedirectResponse("/login")
     if path.startswith("/login"):
         
