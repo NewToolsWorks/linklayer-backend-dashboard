@@ -87,7 +87,7 @@ async def require_logged(request:Request)->any:
  
     user = jwt_data(**raw)
     if not user.ip == ipClient:
-        rint("IP")
+        print("IP "+user.ip+ " "+ipClient)
         raise InvalidTokenError
     
     return user
