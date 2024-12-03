@@ -62,3 +62,5 @@ That's all, it's a basic web dashboard that we hope will be useful to you as wel
 [Telgram Group support](https://t.me/ntwtools)
 
 [Telegram Channel Support](https://t.me/newtoolsworksCanal)
+
+![](https://komarev.com/ghpvc/?username=NewToolsWorks&label=repository view)
