@@ -4,11 +4,7 @@ Dashboard web server to manage linklayer VPN
 ### Requeriments
 - Ubuntu 22 or higher to avoid possible compatibility issues.
 - ROOT access
-<<<<<<< HEAD
-- Python 3.10.12 or higher 
-=======
-- Python 3
->>>>>>> parent of 0448e1e (update python3 version)
+- Python 3.10.12 or higher
 
 ### INSTALL
 
@@ -68,11 +64,7 @@ That's all, it's a basic web dashboard that we hope will be useful to you as wel
 [Telegram Channel Support](https://t.me/newtoolsworksCanal)
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 ![](https://komarev.com/ghpvc/?username=NewToolsWorks&label=repository+view)
 =======
 ![](https://komarev.com/ghpvc/?username=NewToolsWorks&label=repository view)
 >>>>>>> parent of cbbaa00 (views)
-=======
-![](https://komarev.com/ghpvc/?username=NewToolsWorks&label=repository+view)
->>>>>>> parent of 0448e1e (update python3 version)
