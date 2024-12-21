@@ -4,7 +4,7 @@ Dashboard web server to manage linklayer VPN
 ### Requeriments
 - Ubuntu 22 or higher to avoid possible compatibility issues.
 - ROOT access
-- Python 3
+- Python 3.10.12 or higher
 
 ### INSTALL
 
